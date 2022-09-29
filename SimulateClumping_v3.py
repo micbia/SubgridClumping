@@ -50,15 +50,13 @@ boxSize_LB = 244.
 meshSize_LB = 250
 resLB = round(boxSize_LB/meshSize_LB, 3)
 LB_path = '/home/m/mb/mb756/inputs/sph_smooth_cubepm_130329_10_4000_244Mpc_ext2_test/global/so/nc250/'
-#LB_path = '/home/m/mb/mb756/inputs/sph_smooth_cubepm_130627_12_6912_500Mpc_ext2/global/so/nc300/'
 
 # SB: Small, high resolute box size [Mpc/h] and mesh size (output of analysis_clumping.py)
 boxSize_SB = 6.3
 meshSize_SB = 1200
 SB_path = '/its/home/mb756/SubGrid_test/outputs/output_subgrid/AnClumpMic_190829_6.3Mpc_nc1200-so-n-MCPR_NEW2/noc13_bins5_test/' 
-#SB_path = '/its/home/mb756/SubGrid_test/outputs/output_subgrid/AnClumpMic_190225_6.3Mpc_nc1200-so-n-MCPR_noc3467_NEW/noc8_bins5/'
-noc = 13 #int(SB_path[SB_path.find('/noc')+4:SB_path.find('_bins')])
-MaxBin = 5 #int(SB_path[-2:-1])
+noc = int(SB_path[SB_path.find('/noc')+4:SB_path.find('_bins')])
+MaxBin = int(SB_path[-2:-1])
 
 
 # OUTPUT PATH
@@ -94,7 +92,7 @@ print 'The large box simulation resolution size is %.3f Mpc/h for redshfit range
 print "...Reading the mean, quadratic and lognormal distribution parameters and its related quantaties.\n"
 meanParamsFile = pd.read_csv('%sparams/par_mean_%s_nc%d.txt' %(SB_path, str(boxSize_SB), meshSize_SB), sep='\t', skiprows=1).rename(columns={'# c2': 'c2'})
 quadParamsFile = pd.DataFrame(np.loadtxt('%sparams/par_quad_%s_nc%d.txt' %(SB_path, str(boxSize_SB), meshSize_SB), usecols=(1,2,3,4,5,6)), index=redshift_SB, columns=['a', 'b', 'c', 'err_a', 'err_b', 'err_c']).rename_axis('z')
-lognormParamsFile = pd.read_csv('%sparams/par_lognorm_%s_nc%d.csv' %(SB_path, str(boxSize_SB), meshSize_SB), index_col=0, converters={'bin%d' %i: lambda string: np.array(string[1:-1].split(), dtype=float) for i in range(MaxBin)})
+lognormParamsFile = pd.read_csv('%sparams/par_lognorm_%s_nc%d.csv' %(SB_path, str(boxSize_SB), meshSize_SB), index_col=0, converters={'bin%d' %i: lambda string: np.array(string[1:-1].split(', '), dtype=float) for i in range(MaxBin)})
 
 
 def OverplotOriginalCoarsedData(z, noc):

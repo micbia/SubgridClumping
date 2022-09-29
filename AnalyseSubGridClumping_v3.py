@@ -46,21 +46,15 @@ timestr = time.strftime('%y%m%d')
 boxSize = 6.3
 meshSize = 1200
 
-#subgrid_path = '/research/prace/sph_smooth_cubepm_130328_12_3456_13Mpc_ext2/nc1200/'
-subgrid_path = '/home/m/mb/mb756/inputs/sph_smooth_cubepm_130314_6_1728_'+str(boxSize)+'Mpc_ext2/nc'+str(meshSize)+'/'  # new data
-#subgrid_path = '/research/prace/sph_smooth_cubepm_old_6_1728_'+str(boxSize)+'Mpc/global/so/nc'+str(meshSize)+'/'   # old data
+subgrid_path = '/home/m/mb/mb756/inputs/sph_smooth_cubepm_130314_6_1728_'+str(boxSize)+'Mpc_ext2/nc'+str(meshSize)+'/'
 
 # Redshift must to be sorted in decreasing order, meanwhile num of coarsening in increasing order!
 redshift = get_dens_redshifts(subgrid_path)[::-1]
-#redshift = np.array([21.062, 16.095, 13.557, 10.877, 8.892, 7.305])
-#redshift = np.array([7.305, 8.892])
 noc = 8			 # number of coarsening desired
 resLB = 500./300	 # resolution to achieve (large box)
 resSB = boxSize/meshSize # resolution small box
-
 MaxBin = 5    # number of density bin (look for 'nr_BINS' in the method 'getSmartBin')
 
-#output_path = '../outputs/output_subgrid/AnClumpMic_'+timestr+'_'+str(boxSize)+'Mpc_nc'+str(meshSize)+'-so-n-MCPR_4bins/'
 output_path = '/its/home/mb756/SubGrid_test/outputs/output_subgrid/AnClumpMic_190829_6.3Mpc_nc1200-so-n-MCPR_NEW2/noc%d_bins%d_test/' %(noc, MaxBin)
 '''*****************************************'''
 conv.set_sim_constants(boxsize_cMpc = boxSize) # Set conversion factors.  

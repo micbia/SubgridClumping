@@ -30,6 +30,7 @@ Our framework is devided into two main codes.
 Once the variables are changed the code can be run by simply:
 <br>
 &emsp;&#9654;&emsp; python AnalyseSubGridClumping.py
+<br>
 &emsp;&#9654;&emsp; python SimulateClumping.py
 <br><br>
 At the moment there are parameters available for a simulation with resolution 1.667 Mpc/h in:

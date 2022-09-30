@@ -7,49 +7,32 @@ See publication about this work https://arxiv.org/abs/2101.01712.
 <br><br>
 Our framework is devided into two main codes.
 
-&emsp;&#9654;&emsp;<b>AnalyseSubGridClumping.py</b>:<br>For a given small high-resolution simulation, it derives the three clumping model parameters.
-
-&emsp;&#9654;&emsp; <b>SimulateClumping.py</b>:<br>For the given density field of a large low-resolution simulation, it computes a clumping factor cube (same mesh-size as input) for the three models.
-
-
-
+&emsp;&#9654;&emsp;<b>AnalyseSubGridClumping.py</b>:<br>For a given small high-resolution simulation, it derives the three clumping model parameters. The variables to change are in the same file, they are the following:
 <ul>
-    <li><i>boxSize_LB</i>: is the box size in cMpc/h.</li>
-    <li><i>meshSize_LB</i>: size of the density regular grid.</li>
-    <li><i>LB_path</i>: the directory of the smoothed density.</li>
+    <li><b>boxSize</b>: is the small box size in cMpc/h.</li>
+    <li><b>redshift</b>: the redshift of the small box simulation.</li>
+    <li><b>resLB</b>: the desired resolution (correspond to the large box resolution).</li>
+    <li><b>noc</b>: number of coarsening (suggested to be > 8).</li>
+    <li><b>MaxBin</b>: binning of the stochastic model (set to be 5).</li>
 </ul> 
 
+&emsp;&#9654;&emsp; <b>SimulateClumping.py</b>:<br>For the given density field of a large low-resolution simulation, it computes a clumping factor cube (same mesh-size as input) for the three models. The variables to change are in the same file, they are the following:
 
-boxSize_LB
-
-If you want to derive the 
-
-%----
-
-
-Segmentation 2D Convolutional U-Network for Identification of HI regions during the Cosmic Epoch of Reionization in 21-cm 3D Tomography Observations
-
-<img src="https://github.com/micbia/SegU-Net/blob/master/utils_plot/Unet_model.png"> 
- 
-<b>Seg U-Net Training Utilization:</b></br>
-to train the network on data at you disposal you can change the directory path variable <i>PATH</i> in the initial condition files <i>net.ini</i>, as well as other hypeparameters. The actual data should be stored at this location in a sub-directory called <i>data/</i>.
-</br>Then run the following command:</br>
-
-&emsp;&#9654;&emsp; python segUnet.py config/net.ini
-
-If you want to resume a training change the parameters <i>BEST_EPOCH</i> and <i>RESUME_EPOCH</i> in the same initial condition file, the first indicates the epoch of the best saved model, the second is the restarting epoch. These quantities should be both zero if you are starting a new training. You also must provide the output directory <i>RESUME_PATH</i> of the interrupted training (genertaed by the code). Our code save the entire network (weights and layers) so that, in case of resumed trainig the model is already compiled (keras: load_model).
-
-Also, the number of down- and up-sampling levels are automatically scales depending on the images size (between 64 and 128 per side, 4 levels. Above equal 128, 5 levels).
-
-</br>
-<b>Seg U-Net Predicts 21cm:</b></br>
-to do some predictions with your best trained network, use:</br></br>
-
-&emsp;&#9654;&emsp; python pred_segUnet.py config/pred.ini
-
-in the initial condition file <i>pred.ini</i>, change:</br>
 <ul>
-  <li><i>PATH_OUT</i> is the directory of the best performing model.</li>
-  <li><i>PATH_PREDIC</i> is the path of the data to predict (same structure as in <i>net.ini</i> file).</li>
-  <li><i>AUGMENT</i> is the number of times you want to increase your data set (random flip of 90, 180, 270 or 360 along the x, y or z-axis).</li>
+    <li><b>boxSize_LB</b>: is the box size in cMpc/h.</li>
+    <li><b>meshSize_LB</b>: size of the density regular grid.</li>
+    <li><b>LB_path</b>: the directory of the smoothed density.</li>
+    <li><b>output_path</b>: the directory, where to store the computed clumping cubes.</li>
+
 </ul> 
+
+<br><br>
+Once the variables are changed the code can be run by simply:
+&emsp;&#9654;&emsp; python AnalyseSubGridClumping.py
+&emsp;&#9654;&emsp; python SimulateClumping.py
+<br><br>
+At the moment there are parameters available for a simulation with resolution 1.667 Mpc/h in:
+<ul>
+    <li>./results/AnClumpMic_190829_6.3Mpc_nc1200-so-n-MCPR_NEW2/noc8_bins5</li>
+</ul>
+so there is no need to run the first code.

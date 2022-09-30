@@ -1,6 +1,6 @@
 # SubgridClumping
  
-A Code to derive the parameters for the global, in-homogeneous and stochastic clumping model and then compute the clumping factor large low-resolution N-body simulations smoothed on a regular grid. Our code is meant for the <i>CUBEP3M</i> simulation. If you wish to use a different inputs, please contact the developper.
+A Code to derive the parameters for the global, in-homogeneous and stochastic clumping model and then compute the clumping factor for large low-resolution N-body simulations smoothed on a regular grid. Our code is meant for the <i>CUBEP3M</i> simulation. If you wish to use a different inputs, please contact the developper.
 <br><br>
 <img src="https://github.com/micbia/SubgridClumping/blob/main/results/AnClumpMic_190829_6.3Mpc_nc1200-so-n-MCPR_NEW2/noc8_bins5/plot/7.305_6.3_1.667_nc1200_clumping.png"> 
 See publication about this work https://arxiv.org/abs/2101.01712.
@@ -10,7 +10,7 @@ Our framework is devided into two main codes.
 &emsp;&#9654;&emsp;<b>AnalyseSubGridClumping.py</b>:<br>For a given small high-resolution simulation, it derives the three clumping model parameters. The variables to change are in the same file, they are the following:
 <ul>
     <li><b>boxSize</b>: is the small box size in cMpc/h.</li>
-    <li><b>redshift</b>: the redshift of the small box simulation.</li>
+    <li><b>redshift</b>: the list of redshift of the small box simulation.</li>
     <li><b>resLB</b>: the desired resolution (correspond to the large box resolution).</li>
     <li><b>noc</b>: number of coarsening (suggested to be > 8).</li>
     <li><b>MaxBin</b>: binning of the stochastic model (set to be 5).</li>
@@ -28,6 +28,7 @@ Our framework is devided into two main codes.
 
 <br><br>
 Once the variables are changed the code can be run by simply:
+<br>
 &emsp;&#9654;&emsp; python AnalyseSubGridClumping.py
 &emsp;&#9654;&emsp; python SimulateClumping.py
 <br><br>

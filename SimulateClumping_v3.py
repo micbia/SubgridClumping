@@ -51,17 +51,16 @@ meshSize_LB = 250
 resLB = round(boxSize_LB/meshSize_LB, 3)
 LB_path = '/home/m/mb/mb756/inputs/sph_smooth_cubepm_130329_10_4000_244Mpc_ext2_test/global/so/nc250/'
 
-# SB: Small, high resolute box size [Mpc/h] and mesh size (output of analysis_clumping.py)
-boxSize_SB = 6.3
-meshSize_SB = 1200
-SB_path = '/its/home/mb756/SubGrid_test/outputs/output_subgrid/AnClumpMic_190829_6.3Mpc_nc1200-so-n-MCPR_NEW2/noc13_bins5_test/' 
-noc = int(SB_path[SB_path.find('/noc')+4:SB_path.find('_bins')])
-MaxBin = int(SB_path[-2:-1])
-
-
 # OUTPUT PATH
 output_path = '/its/home/mb756/SubGrid_test/outputs/output_simclump/SimClumpMic_%s_%dMpc_nc%d/' %(timestr, boxSize_LB, meshSize_LB)
 '''*****************************************'''
+
+# SB: Small, high resolute box size [Mpc/h] and mesh size (output of analysis_clumping.py)
+boxSize_SB = 6.3
+meshSize_SB = 1200
+SB_path = './results/AnClumpMic_190829_6.3Mpc_nc1200-so-n-MCPR_NEW2/noc13_bins5_test/' 
+noc = int(SB_path[SB_path.find('/noc')+4:SB_path.find('_bins')])
+MaxBin = int(SB_path[-2:-1])
 
 # Enable verbose output and set conversion factors. 
 set_verbose(True)

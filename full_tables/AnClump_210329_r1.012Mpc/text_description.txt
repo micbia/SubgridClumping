@@ -1,0 +1,30 @@
+   _____                .__               .__        
+  /  _  \   ____  ____  |  | ___.__. _____|__| ______
+ /  /_\  \ /    \ \__ \ |  |<   |  |/  ___/  |/  ___/
+/    |    \   |  \/ __ \|  |_\___  |\___ \|  |\___ \ 
+\____|____/___|__(______/____/\____/______|__/______|
+_________  .__                           .__                 
+\_   ___ \ |  |   __ __   _____  ______  |__|  ____    ____  
+/    \  \/ |  |  |  |  \ /     \ \____ \ |  | /    \  / ___\ 
+\     \____|  |__|  |  /|  Y Y  \|  |_| ||  ||   |  \/ /_/  |
+ \________/|____/|____/ |__|_|__/|   __/ |__||___| _/\___  / 
+                                 |__|               /_____/
+
+Subgrid files path:
+ /home/m/mb/mb756/inputs/sph_smooth_cubepm_130314_6_1728_6.3Mpc_ext2/nc1200/
+Output results path:
+ /its/home/mb756/SubGrid_test/outputs/output_subgrid/full_tables/AnClump_210329_r1.012Mpc/
+
+Redshift range from 43.619 to 7.305 for a total of 60 snapshot
+Number of Coarsening:	18
+Coarsed resolution:	0.708 Mpc/h
+Number of density bins:	50
+Overlap of sub-grid volumes to represent coarse size:	12.00
+
+Parameter files are:
+ * par_mean_6.3_nc1200.txt		shape: (60, 2)
+	for C(z) = C0 * exp(c1*z + c2*z^2) + 1	see file description for more details
+ * par_quad_6.3_nc1200.npy		shape: (60, 7)			[z]
+	[a, b, c, err a, b and c]
+ * par_lognorm_6.3_nc1200.npy		shape: (60, 12)		[z][MaxBin]
+	[median, sigma, density bin low, high limit and middle value]
